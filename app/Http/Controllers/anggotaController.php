@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
 use Illuminate\Http\Request;
 
 class anggotaController extends Controller
@@ -11,7 +12,10 @@ class anggotaController extends Controller
      */
     public function index()
     {
-        return view('anggota.index');
+        $books = Book::all();
+
+        return view('anggota.index', compact('books'));
+        
     }
 
     /**
