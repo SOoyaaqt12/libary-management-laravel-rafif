@@ -15,4 +15,8 @@ class Book extends Model
         'status',
         'deskripsi'
     ];
+
+    public function loans() {
+        return $this->hasMany(pinjamBuku::class);
+    }
 }
