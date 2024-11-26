@@ -13,7 +13,8 @@ class Book extends Model
         'tahun_terbit',
         'jumlah_stok',
         'status',
-        'deskripsi'
+        'deskripsi',
+        'loan_status',
     ];
 
     public function loans() {

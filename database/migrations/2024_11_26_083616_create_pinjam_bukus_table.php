@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('pinjam_bukus', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('book_id')->constrained()->onDelete('cascade');
+            $table->date('tanggal_pinjam')->default(now())->change();
+            $table->date('tanggal_kembali')->nullable();
+            $table->string('status')->default('borrowed');
             $table->timestamps();
         });
     }

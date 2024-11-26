@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\pinjamBuku;
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 
 class anggotaController extends Controller
@@ -31,7 +33,29 @@ class anggotaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'book_id' => 'required|exists:books,id',
+            'tanggal_pinjam' => 'required|date',
+            'tanggal_kembali' => 'required|date|after_or_equal:tanggal_pinjam',
+        ]);
+
+        $books = Book::findorFail($request->book_id);
+        if (!$books->status) {
+            return back();
+        }
+
+        pinjamBuku::create([
+            'user_id' => auth()->id(),
+            'book_id' => $books->id,
+            'tanggal_pinjam' => $request->tanggal_pinjam,
+            'tanggal_kembali' => $request->tanggal_kembali,
+            'status' => 'borrowed',
+        ]);
+
+        $books->update([
+            'status' => false,
+            'loan_status' => 'borrowed',
+        ]);
     }
 
     /**
