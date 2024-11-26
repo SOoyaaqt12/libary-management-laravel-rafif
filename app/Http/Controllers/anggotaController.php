@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use App\Models\pinjamBuku;
-use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\Events\Validated;
 
 class anggotaController extends Controller
 {
@@ -45,7 +46,7 @@ class anggotaController extends Controller
         }
 
         pinjamBuku::create([
-            'user_id' => auth()->id(),
+            'user_id' => Auth::id(),
             'book_id' => $books->id,
             'tanggal_pinjam' => $request->tanggal_pinjam,
             'tanggal_kembali' => $request->tanggal_kembali,
