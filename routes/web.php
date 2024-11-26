@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\anggotaController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\usersController;
+use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -21,8 +23,15 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::resource('books', BookController::class);
 
-Route::resource('users', usersController::class);
 
+Route::group(['middleware' => ['auth','role:admin']], function(){
+    Route::resource('books', BookController::class);
+    Route::resource('users', usersController::class);
+});
+
+
+Route::group(['middleware' => ['auth', 'role:anggota' ]], function(){
+    Route::resource('anggota', anggotaController::class);
+});
 

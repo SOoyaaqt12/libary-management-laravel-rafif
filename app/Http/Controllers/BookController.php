@@ -30,7 +30,27 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'judul_buku' => 'required',
+            'penulis' => 'required',
+            'ketagori' => 'required',
+            'tahun_terbit' => 'required',
+            'jumlah_stok' => 'required',
+            'status' => 'required',
+            'deskripsi' => 'required',
+        ]);
+
+        Book::create([
+            'judul_buku' => $request->input('judul_buku'),
+            'penulis' => $request->input('penulis'),
+            'ketagori' => $request->input('ketagori'),
+            'tahun_terbit' => $request->input('tahun_terbit'),
+            'jumlah_stok' => $request->input('jumlah_stok'),
+            'status' => $request->input('status'),
+            'deskripsi' => $request->input('deskripsi'),
+        ]);
+
+        return redirect()->route('books.index')->with('success','Data Berhasil Ditambahkan');
     }
 
     /**
