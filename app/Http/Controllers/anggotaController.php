@@ -17,7 +17,7 @@ class anggotaController extends Controller
     {
         $books = Book::all();
 
-        return view('anggota.index', compact('books'));
+        return view ('anggota.index', compact('books'));
         
     }
 
@@ -26,7 +26,9 @@ class anggotaController extends Controller
      */
     public function create()
     {
-        //
+        $books = pinjamBuku::all();
+
+        return view ('anggota.create', compact('books'));
     }
 
     /**
