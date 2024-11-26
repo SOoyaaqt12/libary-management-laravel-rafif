@@ -40,17 +40,9 @@ class BookController extends Controller
             'deskripsi' => 'required',
         ]);
 
-        Book::create([
-            'judul_buku' => $request->input('judul_buku'),
-            'penulis' => $request->input('penulis'),
-            'ketagori' => $request->input('ketagori'),
-            'tahun_terbit' => $request->input('tahun_terbit'),
-            'jumlah_stok' => $request->input('jumlah_stok'),
-            'status' => $request->input('status'),
-            'deskripsi' => $request->input('deskripsi'),
-        ]);
+        Book::create($request->all());
 
-        return redirect()->route('books.index')->with('success','Data Berhasil Ditambahkan');
+        return redirect('books');
     }
 
     /**
