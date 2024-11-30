@@ -47,3 +47,105 @@ themeToggleBtn.addEventListener('click', function() {
 document.addEventListener("DOMContentLoaded", function(event) {
     document.getElementById('defaultModalButton').click();
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Ambil modal dan tombol close
+    const modal = document.getElementById("editModal");
+    const closeBtn = document.querySelector(".close");
+
+    // Ambil tombol edit dan proses data
+    const editButtons = document.querySelectorAll(".btn-edit");
+
+    editButtons.forEach(button => {
+        button.addEventListener("click", function() {
+            const postId = this.getAttribute("data-id");
+            const postTitle = this.getAttribute("data-title");
+            const postContent = this.getAttribute("data-content");
+
+            // Isi form dengan data yang dipilih
+            document.getElementById("editTitle").value = postTitle;
+            document.getElementById("editContent").value = postContent;
+            
+            // Update action form dengan URL untuk update
+            const formAction = `/posts/${postId}`;
+            document.getElementById("editForm").action = formAction;
+
+            // Tampilkan modal
+            modal.style.display = "block";
+        });
+    });
+
+    // Tutup modal
+    closeBtn.onclick = function() {
+        modal.style.display = "none";
+    };
+
+    // Tutup modal jika area luar modal diklik
+    window.onclick = function(event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    };
+
+    // Tangani pengiriman form dengan AJAX
+    const form = document.getElementById("editForm");
+    form.addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        const formData = new FormData(form);
+        const actionUrl = form.action;
+
+        // Kirim request menggunakan Fetch API (atau Anda bisa pakai jQuery.ajax)
+        fetch(actionUrl, {
+            method: 'POST',
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',  // Agar Laravel mengenali request ini sebagai AJAX
+                'X-CSRF-TOKEN': formData.get('_token')  // CSRF token untuk keamanan
+            },
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Tutup modal setelah berhasil
+            modal.style.display = "none";
+
+            // Perbarui data di halaman
+            const updatedRow = document.querySelector(`[data-id='${data.id}']`).parentElement.parentElement;
+            updatedRow.querySelector(".post-title").textContent = data.title;
+            updatedRow.querySelector(".post-content").textContent = data.content;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    });
+});
+
+let itemIdToDelete = null;
+
+function openDeleteModal(id) {
+    itemIdToDelete = id;
+    document.getElementById('deleteModal').classList.remove('hidden');
+}
+
+function closeDeleteModal() {
+    itemIdToDelete = null;
+    document.getElementById('deleteModal').classList.add('hidden');
+}
+
+document.getElementById('confirmDelete').addEventListener('click', function () {
+    if (itemIdToDelete) {
+        fetch(`/items/${itemIdToDelete}`, {
+            method: 'DELETE',
+            headers: {
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert(data.message); // Tampilkan pesan
+            location.reload(); // Reload halaman
+        })
+        .catch(error => console.error('Error:', error));
+    }
+    closeDeleteModal();
+});

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
@@ -58,7 +59,8 @@ class BookController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $books = Book::findOrFail($id);
+        return view('books.edit', compact('books'));
     }
 
     /**
@@ -66,7 +68,26 @@ class BookController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'judul_buku' => 'required|max:255',
+            'penulis' => 'required|max:100',
+            'tahun_terbit' => 'required|max:4',
+            'jumlah_stok' => 'required',
+            'ketagori' => 'required',
+            'deskripsi' => 'required|max:1000',
+        ]);
+
+        $books = Book::findOrFail($id);
+        $books->update([
+            'judul_buku' => $request->judul_buku,
+            'penulis' => $request->penulis,
+            'tahun_terbit' => $request->tahun_terbit,
+            'jumlah_stok' => $request->jumlah_stok,
+            'ketagori' => $request->ketagori,
+            'deskripsi' => $request->deskripsi,
+        ]);
+
+        return redirect()->route('books.index');
     }
 
     /**
@@ -74,6 +95,12 @@ class BookController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $books = Book::findOrFail($id);
+
+        $books->delete;
+
+        return response()->json([
+            'message' => 'Data berhasil dihapus!'
+        ]);
     }
 }

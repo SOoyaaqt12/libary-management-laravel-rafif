@@ -90,6 +90,7 @@
                                 <th scope="col" class="px-4 py-3">Jumlah Stok</th>
                                 <th scope="col" class="px-4 py-3">Status</th>
                                 <th scope="col" class="px-4 py-3">Deskripsi</th>
+                                <th scope="col" class="px-4 py-3">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -104,7 +105,22 @@
                                 <td class="px-4 py-3">{{ $book->jumlah_stok }}</td>
                                 <td class="px-4 py-3">{{ $book->status }}</td>
                                 <td class="px-4 py-3">{{ $book->deskripsi }}</td>
+                                <td class="px-4 py-3">
+                                    <button class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-1.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" onclick="openDeleteModal({{ $book->id }})">Hapus</button>
+                                    <a href="{{ route('books.edit', $book->id) }}"><button type="button" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-full transition hover:scale-125 text-sm px-5 py-1.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Edit</button></a>
+                                </td>
                             </tr>
+                            <div id="deleteModal" class="modal hidden fixed top-0 left-0 w-full h-full bg-gray-800 bg-opacity-50 flex items-center justify-center">
+                                <div class="bg-white p-5 rounded-lg shadow-md w-1/3">
+                                    <h2 class="text-lg font-bold mb-4">Konfirmasi Hapus</h2>
+                                    <p>Apakah Anda yakin ingin menghapus data ini?</p>
+                                    <div class="mt-4 flex justify-end">
+                                        <button class="btn btn-secondary mr-2" onclick="closeDeleteModal()">Batal</button>
+                                        <button class="btn btn-danger" id="confirmDelete">Hapus</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
                             @endforeach
                         </tbody>
                     </table>
