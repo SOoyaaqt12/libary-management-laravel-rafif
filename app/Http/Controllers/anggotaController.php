@@ -16,9 +16,11 @@ class anggotaController extends Controller
     public function index()
     {
         $books = Book::all();
+        //menghitung jumlah buku yang dipinjam
+        $totalpinjambuku = pinjambuku::where('user_id', Auth::id())->where('status','borrowed')->count();
 
         return view ('anggota.index', compact('books'));
-        
+
     }
 
     /**

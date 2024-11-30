@@ -27,7 +27,17 @@
                 document.documentElement.classList.remove('dark')
             }
         </script>
-        
+
+        <script>
+            window.onload = function() {
+                window.history.pushState(null, null, window.location.href);
+                window.onpopstate = function() {
+                    window.history.pushState(null, null, window.location.href);
+                };
+            }
+        </script>
+
+
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
