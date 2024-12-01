@@ -35,12 +35,7 @@
 <section class="bg-white dark:bg-gray-900 flex justify-center items-center">
         <div
             class="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6">
-            <img class="w-full dark:hidden"
-                src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup.svg"
-                alt="dashboard image">
-            <img class="w-full hidden dark:block"
-                src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup-dark.svg"
-                alt="dashboard image">
+            <img src="https://lh3.googleusercontent.com/Yjnx-OyJQ669gelXMZckp_iBZAir51y_0SeM1e9C4hPf1fO8BuJrHh53Y49RSNYO7u9Xgb-DxDJhw8Td4o13NXdqOOpmjiiLYaMKchNGZ61SeaPdtj-E9jQPLeKrar2maQ=w1280" class="CENy8b" role="img" style="width: 80%; margin: -0.4322739325% 0 -0.4322739325% 0%">
             <div class="mt-4 md:mt-0">
                 <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Let's create more
                     tools and ideas that brings us together.</h2>
@@ -60,7 +55,7 @@
                                 @else
                                     <a
                                         href="{{ route('login') }}"
-                                        class="rounded-md px-3 py-2 text-black bg-slate-500 ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                                        class="rounded-full px-4 py-1.5 text-black bg-primary-600 ring-1 ring-transparent transition duration-300 hover:scale-125 hover:bg-primary-700 dark:hover:bg-primary-800 hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
                                     >
                                         Log in
                                     </a>
@@ -68,13 +63,17 @@
                                     @if (Route::has('register'))
                                         <a
                                             href="{{ route('register') }}"
-                                            class="rounded-md px-3 py-2 text-black bg-slate-500 ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                                            class="rounded-full px-4 py-1.5 text-black bg-primary-600 ring-1 ring-transparent transition duration-300 hover:scale-125 hover:bg-primary-700 dark:hover:bg-primary-800 hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
                                         >
                                             Register
                                         </a>
                                     @endif
                                 @endauth
-                            </nav>
+                            </nav>    
+                            <button id="theme-toggle" type="button" class="text-gray-500 dark:text-gray-400 transition duration-300 hover:scale-125 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg text-sm ms-20 mt-32 p-2">
+                                <svg id="theme-toggle-dark-icon" class="hidden w-8 h-8" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                                <svg id="theme-toggle-light-icon" class="hidden w-8 h-8" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                            </button>
                         @endif
             </div>
         </div>

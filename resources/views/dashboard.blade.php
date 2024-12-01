@@ -9,14 +9,14 @@
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
                     </svg>
                 </div>
-                <input type="search" id="default-search" class="block w-full p-4 ps-10 pe-60 text-sm text-gray-900 border border-gray-300 rounded-full bg-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search Mockups, Logos..." required />
-                <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-3xl text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
+                <input type="search" id="default-search" class="block w-full p-4 ps-10 pe-60 text-sm text-gray-900 border border-gray-300 rounded-full bg-gray-300 transition hover:shadow-black hover:shadow-2xl hover:scale-110 focus:scale-100 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search Mockups, Logos..." required />
+                <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 transition hover:shadow-black hover:shadow-2xl hover:scale-110 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-3xl text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
             </div>
         </div>
         </form>
             <div class="me-10">
                 <div class="flex flex-row items-center gap-8">
-                    <p class="text-base text-gray-900 dark:text-white">Jumat, 18 Maret 2022 | 23:12</p>
+                    <p id="realtime-date" class="text-base text-gray-900 transition hover:scale-105 hover:shadow-black hover:shadow-2xl hover:bg-gray-700 px-3 rounded-full py-1 dark:text-white">{{ now()->format('l, d F Y | H:i') }}</p>
                     <svg class="w-[20px] h-[20px] fill-[#ffffff]" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
 
                         <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
@@ -34,7 +34,7 @@
     </div>
     <div class=" lg:pl-64 ">
         <div class="flex justify-normal items-center bg-white shadow-2xl dark:bg-gray-800 dark:text-white dark:border-gray-700 p-12 m-12 rounded-3xl border border-gray-200 ">
-            <img src="./storage/gambardashboard.jpg" alt="" class="w-1/3 p-7">
+            <img src="https://lh3.googleusercontent.com/Yjnx-OyJQ669gelXMZckp_iBZAir51y_0SeM1e9C4hPf1fO8BuJrHh53Y49RSNYO7u9Xgb-DxDJhw8Td4o13NXdqOOpmjiiLYaMKchNGZ61SeaPdtj-E9jQPLeKrar2maQ=w1280" class="CENy8b" role="img" style="width: 35%; margin: -0.4322739325% 0 -0.4322739325% 0%">
             <div class="flex flex-col me-10 p-10">
                 <p class="text-5xl text-gray-900 font-bold dark:text-white mb-10">Selamat Pagi, Admin!</p>
                 <p class="text-xl text-gray-900 dark:text-white">Lorem Ipsum is simply dummy text of the printing and  typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
@@ -52,16 +52,16 @@
     </div>
     <div class="lg:pl-64 flex flex-row justify-around pb-9">
         <div class="flex flex-row gap-28">
-            <div class="bg-[#6E987C] text-white rounded-3xl shadow-2xl w-full">
+            <div class="bg-[#6E987C] text-white rounded-3xl shadow-2xl w-full transition duration-300 hover:scale-110 hover:shadow-black">
                 <div class="flex flex-row justify-between items-center gap-6 p-20">
                     <i class="fa-solid fa-book"></i>
-                    <h3 class="text-2xl text-center font-bold"></h3>
+                    <h3 class="text-2xl text-center font-bold">90</h3>
                 </div>
                 <p class="text-xl text-center p-7">Total Buku Dipinjam</p>
             </div>
         </div>
         <div class="flex flex-row gap-28">
-            <div class="bg-[#22615D] text-white rounded-3xl shadow-2xl w-full">
+            <div class="bg-[#22615D] text-white rounded-3xl shadow-2xl w-full transition duration-300 hover:scale-110 hover:shadow-black">
                 <div class="flex flex-row justify-between items-center p-20">
                     <i class="fa-solid fa-arrow-turn-up"></i>
                     <h3 class="text-2xl text-center font-bold">78</h3>
@@ -70,7 +70,7 @@
             </div>
         </div>
         <div class="flex flex-row gap-28">
-            <div class="bg-[#FBC78F] text-white rounded-3xl shadow-2xl w-full">
+            <div class="bg-[#FBC78F] text-white rounded-3xl shadow-2xl w-full transition duration-300 hover:scale-110 hover:shadow-black">
                 <div class="flex flex-row justify-between items-center p-20">
                     <i class="fa-solid fa-arrow-turn-down"></i>
                     <h3 class="text-2xl text-center font-bold">78</h3>
@@ -79,7 +79,7 @@
             </div>
         </div>
         <div class="flex flex-row gap-28">
-            <div class="bg-[#AC455E] text-white rounded-3xl shadow-2xl w-full">
+            <div class="bg-[#AC455E] text-white rounded-3xl shadow-2xl w-full transition duration-300 hover:scale-110 hover:shadow-black">
                 <div class="flex flex-row justify-between items-center p-20">
                     <i class="fa-solid fa-virus-slash"></i>
                     <h3 class="text-2xl text-center font-bold">78</h3>

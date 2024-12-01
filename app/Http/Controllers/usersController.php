@@ -60,7 +60,9 @@ class usersController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $users = User::findOrFail($id);
+
+        return view('users.edit', compact('users'));
     }
 
     /**
@@ -68,7 +70,23 @@ class usersController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,' . $id,
+            'password' => 'nullable|min:8',
+        ]);
+
+        $users = User::findOrFail($id);
+        $users->name = $request->name;
+        $users->email = $request->email;
+
+        if ($request->filled('password')) {
+            $users->password = Hash::make($request->password);
+        }
+
+        $users->save();
+
+        return redirect()->route('users.index')->with('Success', 'User updated successfully');
     }
 
     /**

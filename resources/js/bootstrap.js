@@ -149,3 +149,4 @@ document.getElementById('confirmDelete').addEventListener('click', function () {
     }
     closeDeleteModal();
 });
+

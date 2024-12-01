@@ -36,6 +36,39 @@
                 };
             }
         </script>
+        <script>
+            function updateTime() {
+                const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+                const now = new Date();
+                
+                const formattedTime = now.toLocaleDateString('id-ID', options).replace(' pukul', ' |');
+                document.getElementById('realtime-date').innerText = formattedTime;
+            }
+        
+            // Jalankan fungsi setiap detik
+            setInterval(updateTime, 1000);
+        
+            // Panggil fungsi pertama kali untuk memastikan waktu langsung ter-update
+            updateTime();
+        </script>
+        
+
+        <script>
+            function updateTime() {
+                const timestamp = document.getElementById('realtime-date').dataset.timestamp;
+                const now = new Date(Number(timestamp) * 1000 + Date.now() - new Date().getTime());
+                
+                const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+                const formattedTime = now.toLocaleDateString('id-ID', options).replace(' pukul', ' |');
+                document.getElementById('realtime-date').innerText = formattedTime;
+            }
+        
+            setInterval(updateTime, 1000);
+            updateTime();
+        </script>
+        
+        <p id="realtime-date" data-timestamp="{{ now()->timestamp }}" class="hidden text-base text-gray-900 dark:text-white"></p>
+        
 
 
     </head>
