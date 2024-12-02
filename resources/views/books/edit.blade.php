@@ -19,17 +19,17 @@
                         <input type="number" name="tahun_terbit" id="price" value="{{ $books->tahun_terbit }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 transition hover:bg-gray-400 dark:hover:bg-gray-900 hover:scale-105" placeholder="$2999" required="">
                     </div>
                     <div>
-                        <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ketagori</label>
+                        <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
                         <select id="category" name="status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 transition hover:bg-gray-400 dark:hover:bg-gray-900 hover:scale-105">
-                            <option selected="">Pilih Status</option>
+                            <option selected="">{{ $books->status }}</option>
                             <option value="tersedia">Tersedia</option>
                             <option value="tidak_tersedia">Tidak Tersedia</option>
                         </select>
                     </div>
                     <div>
-                        <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
+                        <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ketagori</label>
                         <select id="ketagori" name="ketagori" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 transition hover:bg-gray-400 dark:hover:bg-gray-900 hover:scale-105">
-                            <option selected="">Pilih Ketagori</option>
+                            <option selected="">{{ $books->ketagori }}</option>
                             <option value="komik">Komik</option>
                             <option value="novel">Novel</option>
                             <option value="cerpen">Cerpen</option>

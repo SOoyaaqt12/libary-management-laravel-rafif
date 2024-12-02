@@ -36,7 +36,7 @@
         <div class="flex justify-normal items-center bg-white shadow-2xl dark:bg-gray-800 dark:text-white dark:border-gray-700 p-12 m-12 rounded-3xl border border-gray-200 ">
             <img src="{{ asset('storage/3siswa.png') }}" class="CENy8b" role="img" style="width: 35%; margin: -0.4322739325% 0 -0.4322739325% 0%">
             <div class="flex flex-col me-10 p-10">
-                <p class="text-5xl text-gray-900 font-bold dark:text-white mb-10">Selamat Pagi, Admin!</p>
+                <p class="text-5xl text-gray-900 font-bold dark:text-white mb-10">Selamat Datang, {{ Auth::user()->name }}</p>
                 <p class="text-xl text-gray-900 dark:text-white">Lorem Ipsum is simply dummy text of the printing and  typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
             </div>
 

@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('judul_buku');
             $table->string('penulis');
-            $table->string('tahun_terbit');
+            $table->year('tahun_terbit');
             $table->string('ketagori');
             $table->string('jumlah_stok');
-            $table->string('status')->default('Tersedia');
+            $table->boolean('status')->default(true);
             $table->string('deskripsi');
             $table->timestamps();
         });

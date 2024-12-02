@@ -71,22 +71,14 @@ class BookController extends Controller
         $request->validate([
             'judul_buku' => 'required|max:255',
             'penulis' => 'required|max:100',
-            'tahun_terbit' => 'required|max:4',
+            'tahun_terbit' => 'required|integer|max:4',
             'jumlah_stok' => 'required',
             'ketagori' => 'required',
             'deskripsi' => 'required|max:1000',
+            'status' => 'required|boolean',
         ]);
 
-        $books = Book::findOrFail($id);
-        $books->update([
-            'judul_buku' => $request->judul_buku,
-            'penulis' => $request->penulis,
-            'tahun_terbit' => $request->tahun_terbit,
-            'jumlah_stok' => $request->jumlah_stok,
-            'ketagori' => $request->ketagori,
-            'deskripsi' => $request->deskripsi,
-        ]);
-
+        Book::create($request->all());
         return redirect()->route('books.index');
     }
 
@@ -100,7 +92,7 @@ class BookController extends Controller
 
         // hapus data
         $books->delete();
-        
+
 
         // redirect atau kembali response
         return redirect()->route('books.index')->with(['success'=>'Data Berhasil DIhapus']);
