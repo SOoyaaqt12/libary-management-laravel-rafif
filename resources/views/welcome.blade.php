@@ -35,7 +35,7 @@
 <section class="bg-white dark:bg-gray-900 flex justify-center items-center">
         <div
             class="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6">
-            <img src="https://lh3.googleusercontent.com/Yjnx-OyJQ669gelXMZckp_iBZAir51y_0SeM1e9C4hPf1fO8BuJrHh53Y49RSNYO7u9Xgb-DxDJhw8Td4o13NXdqOOpmjiiLYaMKchNGZ61SeaPdtj-E9jQPLeKrar2maQ=w1280" class="CENy8b" role="img" style="width: 80%; margin: -0.4322739325% 0 -0.4322739325% 0%">
+            <img src="{{ asset('storage/3siswa.png') }}" class="CENy8b" role="img" style="width: 80%; margin: -0.4322739325% 0 -0.4322739325% 0%">
             <div class="mt-4 md:mt-0">
                 <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Let's create more
                     tools and ideas that brings us together.</h2>

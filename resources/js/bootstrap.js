@@ -120,33 +120,3 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-let itemIdToDelete = null;
-
-function openDeleteModal(id) {
-    itemIdToDelete = id;
-    document.getElementById('deleteModal').classList.remove('hidden');
-}
-
-function closeDeleteModal() {
-    itemIdToDelete = null;
-    document.getElementById('deleteModal').classList.add('hidden');
-}
-
-document.getElementById('confirmDelete').addEventListener('click', function () {
-    if (itemIdToDelete) {
-        fetch(`/items/${itemIdToDelete}`, {
-            method: 'DELETE',
-            headers: {
-                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            alert(data.message); // Tampilkan pesan
-            location.reload(); // Reload halaman
-        })
-        .catch(error => console.error('Error:', error));
-    }
-    closeDeleteModal();
-});
-

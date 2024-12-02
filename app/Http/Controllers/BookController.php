@@ -95,12 +95,14 @@ class BookController extends Controller
      */
     public function destroy(string $id)
     {
-        $books = Book::findOrFail($id);
+        // cari data sesuai id
+        $books = Book::findorFail($id);
 
-        $books->delete;
+        // hapus data
+        $books->delete();
+        
 
-        return response()->json([
-            'message' => 'Data berhasil dihapus!'
-        ]);
+        // redirect atau kembali response
+        return redirect()->route('books.index')->with(['success'=>'Data Berhasil DIhapus']);
     }
 }
