@@ -80,20 +80,26 @@
                                 <th scope="col" class="px-4 py-3">email</th>
                                 <th scope="col" class="px-4 py-3">Aksi</th>
                             </tr>
-                        </thead> 
+                        </thead>
                         <tbody>
                             @foreach ( $users as $user )
                             <tr class="border-b dark:border-gray-700 transition duration-300 hover:scale-95 hover:dark:bg-gray-900">
                                 <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $loop->iteration }}</th>
                                 <td class="px-4 py-3">{{ $user->name }}</td>
-                                <td class="px-4 py-3">{{ $user->email }}</td>   
+                                <td class="px-4 py-3">{{ $user->email }}</td>
                                 <td class="px-4 py-3">
                                     <a href="{{ route('users.edit', $user->id) }}"><button type="button" class="focus:outline-none text-white bg-green-700 transition hover:scale-110 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-1.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Edit</button></a>
-                                </td> 
+                                    {{-- delete button --}}
+                                <form onsubmit="return confirm('Apakah Anda Yakin?');" action="{{ route('users.destroy', $user->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-full transition duration-300 hover:scale-125 text-sm px-5 py-1.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Delete</button>
+                                </form>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
-                       
+
                     </table>
                 </div>
                 <nav class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4" aria-label="Table navigation">

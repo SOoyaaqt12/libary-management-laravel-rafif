@@ -41,7 +41,7 @@ themeToggleBtn.addEventListener('click', function() {
             localStorage.setItem('color-theme', 'dark');
         }
     }
-    
+
 });
 
 document.addEventListener("DOMContentLoaded", function(event) {
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Isi form dengan data yang dipilih
             document.getElementById("editTitle").value = postTitle;
             document.getElementById("editContent").value = postContent;
-            
+
             // Update action form dengan URL untuk update
             const formAction = `/posts/${postId}`;
             document.getElementById("editForm").action = formAction;
@@ -120,3 +120,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+document.addEventListener("DOMContentLoaded", function(event) {
+    document.getElementById('defaultModalButton').click();
+});

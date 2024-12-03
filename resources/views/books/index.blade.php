@@ -18,12 +18,74 @@
                         </form>
                     </div>
                     <div class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
-                        <a href="{{ route('books.create') }}"><button type="button" class="flex items-center justify-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800 transition duration-300 hover:scale-110">
-                            <svg class="h-3.5 w-3.5 mr-2" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                <path clip-rule="evenodd" fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" />
-                            </svg>
-                            Add product
-                        </button></a>
+
+                        <div class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
+                            <button id="defaultModalButton" data-modal-target="defaultModal" data-modal-toggle="defaultModal" class="block text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" type="button">
+                                Create product
+                            </button>
+                        </div>
+
+                        <!-- Main modal -->
+                        <div id="defaultModal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-modal md:h-full">
+                            <div class="relative p-4 w-full max-w-2xl h-full md:h-auto">
+                                <!-- Modal content -->
+                                <div class="relative p-4 bg-white rounded-lg shadow dark:bg-gray-800 sm:p-5">
+                                    <!-- Modal header -->
+                                    <div class="flex justify-between items-center pb-4 mb-4 rounded-t border-b sm:mb-5 dark:border-gray-600">
+                                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                                            Add Product
+                                        </h3>
+                                        <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="defaultModal">
+                                            <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                                            <span class="sr-only">Close modal</span>
+                                        </button>
+                                    </div>
+                                    <!-- Modal body -->
+                                    <form method="POST" action="{{ route('books.store') }}">
+                                        @csrf
+                                        <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
+                                            <div class="sm:col-span-2">
+                                                <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Buku</label>
+                                                <input type="text" name="judul_buku" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 transition duration-300 hover:bg-gray-400 hover:shadow-2xl hover:shadow-black dark:hover:bg-gray-900 hover:scale-105 focus:scale-100 focus:shadow-none" placeholder="Type product name" required="">
+                                            </div>
+                                            <div class="w-full">
+                                                <label for="brand" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">penulis</label>
+                                                <input type="text" name="penulis" id="brand" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 hover:shadow-2xl hover:shadow-black dark:focus:border-primary-500 transition duration-300 hover:bg-gray-400 dark:hover:bg-gray-900 hover:scale-105 focus:scale-100 focus:shadow-none" placeholder="Product brand" required="">
+                                            </div>
+                                            <div class="w-full">
+                                                <label for="price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tahun Terbit</label>
+                                                <input type="number" name="tahun_terbit" id="price" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 transition duration-300 hover:bg-gray-400 hover:shadow-2xl hover:shadow-black dark:hover:bg-gray-900 hover:scale-105 focus:scale-100 focus:shadow-none" placeholder="Tahun" required="">
+                                            </div>
+                                            <div>
+                                                <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ketagori</label>
+                                                <select id="category" name="status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 transition duration-300 hover:bg-gray-400 dark:hover:bg-gray-900 hover:scale-105 hover:shadow-2xl hover:shadow-black focus:scale-100 focus:shadow-none">
+                                                    <option selected="">Pilih Status</option>
+                                                    <option value="1">Tersedia</option>
+                                                    <option value="0">Tidak Tersedia</option>
+                                                </select>
+                                            </div>
+                                            <div>
+                                                <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
+                                                <select id="ketagori" name="ketagori" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 transition duration-300 hover:bg-gray-400 dark:hover:bg-gray-900 hover:scale-105 hover:shadow-2xl hover:shadow-black focus:scale-100 focus:shadow-none">
+                                                    <option selected="">Pilih Ketagori</option>
+                                                    <option value="komik">Komik</option>
+                                                    <option value="novel">Novel</option>
+                                                    <option value="cerpen">Cerpen</option>
+                                                    <option value="PH">Phones</option>
+                                                </select>
+                                            </div>
+                                            <div class="sm:col-span-2">
+                                                <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Deskripsi</label>
+                                                <textarea id="description" name="deskripsi" rows="8" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 transition duration-300 hover:shadow-2xl hover:shadow-black hover:bg-gray-400 dark:hover:bg-gray-900 hover:scale-105 focus:scale-100 focus:shadow-none" placeholder="Your description here"></textarea>
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800 transition duration-300 hover:scale-110 hover:shadow-2xl hover:shadow-black">
+                                            Add product
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="overflow-x-auto">
@@ -35,7 +97,6 @@
                                 <th scope="col" class="px-4 py-3">Penulis</th>
                                 <th scope="col" class="px-4 py-3">Ketagori</th>
                                 <th scope="col" class="px-4 py-3">Tahun Terbit</th>
-                                <th scope="col" class="px-4 py-3">Jumlah Stok</th>
                                 <th scope="col" class="px-4 py-3">Status</th>
                                 <th scope="col" class="px-4 py-3">Deskripsi</th>
                                 <th scope="col" class="px-4 py-3">Aksi</th>
@@ -43,14 +104,13 @@
                         </thead>
                         <tbody>
                             @foreach ( $books as $book )
-                            @csrf                               
+                            @csrf
                             <tr class="border-b transition duration-300 hover:scale-95 hover:bg-gray-300 dark:hover:bg-gray-900 dark:border-gray-700">
                                 <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $loop->iteration }}</th>
                                 <td class="px-4 py-3">{{ $book->judul_buku }}</td>
                                 <td class="px-4 py-3">{{ $book->penulis }}</td>
                                 <td class="px-4 py-3">{{ $book->ketagori }}</td>
                                 <td class="px-4 py-3">{{ $book->tahun_terbit }}</td>
-                                <td class="px-4 py-3">{{ $book->jumlah_stok }}</td>
                                 <td class="px-4 py-3">
                                     @if ($book->status == 1)
                                         Tersedia
@@ -66,7 +126,7 @@
                                 <form onsubmit="return confirm('Apakah Anda Yakin?');" action="{{ route('books.destroy', $book->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="focus:outline-none text-white bg-red-700 hover">Delete</button>
+                                    <button type="submit" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-full transition duration-300 hover:scale-125 text-sm px-5 py-1.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Delete</button>
                                 </form>
                                   </td>
                             </tr>

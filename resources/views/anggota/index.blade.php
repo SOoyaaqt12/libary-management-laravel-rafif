@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class="lg:pl-64 pt-10 items-center">
         <p class=" text-6xl ms-8 text-gray-900 font-medium dark:text-white">Anggota</p>
-    
+
     @csrf
     <div class="grid grid-cols-3 gap-20 items-center mt-10">
     @foreach ($books as $book)
@@ -19,10 +19,16 @@
                     <div class=" text-base   text-[#aeb0b3]">{{ $book->status == 1 ? 'tersedia' : 'tidak tersedia' }}
                     </div>
                     <div class="flex justify-end pt-6">
-                        <button data-modal-target="modal-{{ $book->id }}"
-                            data-modal-toggle="modal-{{ $book->id }}" type="button"
-                            class="bg-[#2960c8] text-[#ffffff]  font-bold text-sm p-3 rounded-lg transition duration-300 hover:bg-purple-800 active:scale-95 transform">Pinjam
-                            Buku</button>
+                        {{-- Cek status buku, jika tersedia, tampilkan tombol pinjam --}}
+                        @if ($book->status == 1)
+                            <button data-modal-target="modal-{{ $book->id }}" data-modal-toggle="modal-{{ $book->id }}" type="button" class="bg-[#2960c8] text-[#ffffff] font-bold text-sm p-3 rounded-lg transition duration-300 hover:bg-purple-800 active:scale-95 transform">
+                                Pinjam Buku
+                            </button>
+                        @else
+                            <button type="button" class="bg-gray-400 text-[#ffffff] font-bold text-sm p-3 rounded-lg cursor-not-allowed" disabled>
+                                Buku Tidak Tersedia
+                            </button>
+                        @endif
                     </div>
                 </div>
             </div>

@@ -24,11 +24,11 @@
               </button>
               <ul id="dropdown-pages" class="hidden py-2 space-y-2">
                   <li>
-                      <a href="{{route('books.create')}}" class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-300 group hover:scale-90 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Tambah Buku</a>
-                  </li>
-                  <li>
                       <a href="{{route('books.index')}}" class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-300 group hover:scale-90 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Lemari Buku</a>
                   </li>
+                  <li>
+                    <a href="{{ route('books.create')}}" class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-300 group hover:scale-90 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">List Buku</a>
+                </li>
               </ul>
           </li>
           <li>
