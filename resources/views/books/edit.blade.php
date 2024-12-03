@@ -21,9 +21,15 @@
                     <div>
                         <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
                         <select id="category" name="status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 transition hover:bg-gray-400 dark:hover:bg-gray-900 hover:scale-105">
-                            <option selected="">{{ $books->status }}</option>
-                            <option value="tersedia">Tersedia</option>
-                            <option value="tidak_tersedia">Tidak Tersedia</option>
+                            <option selected="">
+                                @if ($books->id == 1)
+                                    Tersedia
+                                @else
+                                    Tidak Tersedia
+                                @endif
+                            </option>
+                            <option value="1">Tersedia</option>
+                            <option value="0">Tidak Tersedia</option>
                         </select>
                     </div>
                     <div>
@@ -39,7 +45,7 @@
                     <div>
                         <label for="item-weight" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jumlah Stok</label>
                         <input type="number" name="jumlah_stok" id="item-weight" value="{{ $books->jumlah_stok }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 transition hover:bg-gray-400 dark:hover:bg-gray-900 hover:scale-105" placeholder="12" required="">
-                    </div> 
+                    </div>
                     <div class="sm:col-span-2">
                         <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Deskripsi</label>
                         <textarea id="description" name="deskripsi" required="required" rows="8" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 transition hover:bg-gray-400 dark:hover:bg-gray-900 hover:scale-105" placeholder="Your description here">{{ old('deskripsi',$books->deskripsi) }}</textarea>
